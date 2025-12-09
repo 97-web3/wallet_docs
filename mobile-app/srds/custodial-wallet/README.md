@@ -28,10 +28,10 @@
 | 属性 | 值 |
 |------|-----|
 | 项目名称 | 中心化钱包（平台账户/Web2 钱包） |
-| 文档版本 | 1.2 |
+| 文档版本 | 1.3 |
 | 创建日期 | 2025-12-08 |
 | 最后更新 | 2025-12-09 |
-| 总页面数 | 51 |
+| 总页面数 | 46 |
 | 文档语言 | 中文 |
 
 ### V1.0 支持的区块链网络
@@ -142,16 +142,6 @@
 | 45 | [45-platform-account-binding-requirements.md](./45-platform-account-binding-requirements.md) | 平台账户绑定 | CW-045 |
 | 46 | [46-ga-binding-requirements.md](./46-ga-binding-requirements.md) | Google Authenticator 绑定 | CW-046 |
 
-### 十一、闪兑功能（5个页面）
-
-| 序号 | 文档 | 页面名称 | 页面ID |
-|------|------|----------|--------|
-| 47 | [47-swap-select-token-requirements.md](./47-swap-select-token-requirements.md) | 闪兑-选择代币 | CW-047 |
-| 48 | [48-swap-details-requirements.md](./48-swap-details-requirements.md) | 闪兑详情 | CW-048 |
-| 49 | [49-swap-confirm-requirements.md](./49-swap-confirm-requirements.md) | 闪兑确认 | CW-049 |
-| 50 | [50-swap-result-requirements.md](./50-swap-result-requirements.md) | 闪兑结果 | CW-050 |
-| 51 | [51-swap-history-requirements.md](./51-swap-history-requirements.md) | 闪兑记录 | CW-051 |
-
 ---
 
 ## 业务流程图
@@ -170,11 +160,6 @@
 ### 提币流程（链上转账）
 ```
 主页 → 选择币种 → 选择方式（链上转账） → 选择网络 → 输入地址和数量 → 确认信息 → 安全验证 → 提交成功
-```
-
-### 闪兑流程
-```
-主页 → 选择代币对 → 输入金额（查看汇率/滑点） → 安全验证 → 确认兑换 → 等待结果 → 完成/失败
 ```
 
 ---
@@ -208,8 +193,7 @@
 | 通知与消息 | 2 |
 | 系统组件与其他 | 5 |
 | 账户绑定与安全设置 | 2 |
-| 闪兑功能 | 5 |
-| **总计** | **51** |
+| **总计** | **46** |
 
 ---
 
@@ -287,6 +271,7 @@
 |------|------|------|
 | 2025-12-08 | 1.0 | 初始版本，包含44个页面的SRD文档 |
 | 2025-12-08 | 1.1 | 新增平台账户绑定(CW-045)和GA绑定(CW-046)，共46个页面 |
-| 2025-12-09 | 1.2 | 新增闪兑模块(CW-047至CW-051)，更新CW-014审核流程，共51个页面 |
+| 2025-12-09 | 1.2 | 更新CW-014审核流程，共46个页面 |
+| 2025-12-09 | 1.3 | 移除闪兑模块（闪兑功能移至Web3钱包），共46个页面 |
 
 ---
