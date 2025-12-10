@@ -6,7 +6,7 @@
 
 ## F-CRPC-008: 估算 Gas
 
-**描述**: 估算交易所需的 Gas 费用。
+**描述**: 估算交易所需的 Gas 费用，并检查原生币余额是否足够。
 
 **gRPC 方法**: `EstimateGas`
 
@@ -30,9 +30,19 @@
   "gas_limit": 21000,
   "gas_price": "1000000000",
   "estimated_fee": "21000000000000",
-  "estimated_fee_usd": "0.5"
+  "estimated_fee_usd": "0.5",
+  "native_balance": "50000000000000",   // 原生币余额
+  "native_symbol": "TRX",               // 原生币符号
+  "insufficient_gas": false,            // 原生币是否不足以支付 Gas
+  "required_native_balance": "21000000000000",  // 所需原生币数量
+  "shortfall": "0"                      // 缺少的原生币数量 (insufficient_gas=true 时)
 }
 ```
+
+**业务规则**:
+- 当 `insufficient_gas=true` 时，提示用户先充值原生币
+- 返回的 `shortfall` 表示需要补充的原生币数量
+- 各链原生币: TRX (Tron), BNB (BSC), ETH (Ethereum)
 
 ---
 
