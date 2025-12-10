@@ -114,7 +114,6 @@
 | 63 | 空状态 | 空状态（待补充）.png | 空状态 |
 
 ### 模块 11：Google Authenticator 绑定（3 个屏幕）
-> 参考文档: [CW-046 GA绑定需求](../mobile-app/srds/custodial-wallet/46-ga-binding-requirements.md) | [COMMON-002 验证方式规则](../mobile-app/srds/common/verification-method-rules.md)
 
 | # | 屏幕名称 | SRD 参考 | 描述 |
 |---|-------------|----------|-------------|
@@ -130,7 +129,7 @@
 - 错误次数限制：连续5次失败锁定15分钟
 
 ### 模块 12：平台账户绑定（2 个屏幕）
-> 参考文档: [CW-045 平台绑定需求](../mobile-app/srds/custodial-wallet/45-platform-account-binding-requirements.md) | [COMMON-004 钱包切换逻辑](../mobile-app/srds/common/wallet-switch-logic.md)
+
 
 | # | 屏幕名称 | SRD 参考 | 描述 |
 |---|-------------|----------|-------------|
@@ -145,7 +144,7 @@
 - 双向唯一性校验
 
 ### 模块 13：通用功能（3 个屏幕）
-> 参考文档: [COMMON-004 钱包切换](../mobile-app/srds/common/wallet-switch-logic.md) | [COMMON-007 推送通知](../mobile-app/srds/common/push-notification-rules.md) | [COMMON-011 国际化](../mobile-app/srds/common/i18n-specifications.md)
+
 
 | # | 屏幕名称 | SRD 参考 | 描述 |
 |---|-------------|----------|-------------|
