@@ -33,14 +33,15 @@
 | [03-用户管理](./03-用户管理.md)             | Web2 用户列表、状态管理 | `/admin/users`       |
 | [04-提现审批](./04-提现审批.md)             | 提现/转账审批队列       | `/admin/withdrawals` |
 | [05-账本与交易](./05-账本与交易.md)         | 交易记录、资金流水      | `/admin/ledger`      |
-| [06-Swap配置](./06-Swap配置.md)             | DEX 与滑点配置          | `/admin/swap`        |
+| [06-Swap 配置](./06-Swap配置.md)            | DEX 与滑点配置          | `/admin/swap`        |
 | [07-系统设置](./07-系统设置.md)             | 系统配置管理            | `/admin/settings`    |
 | [08-报表与导出](./08-报表与导出.md)         | 报表生成与导出          | `/admin/reports`     |
-| [09-Web3用户管理](./09-Web3用户管理.md)     | Web3 钱包用户管理       | `/admin/web3users`   |
-| [10-Vault资金管理](./10-Vault资金管理.md)   | 多网络钱包、余额管理    | `/admin/vault`       |
+| [09-Web3 用户管理](./09-Web3用户管理.md)    | Web3 钱包用户管理       | `/admin/web3users`   |
+| [10-Vault 资金管理](./10-Vault资金管理.md)  | 多网络钱包、余额管理    | `/admin/vault`       |
 | [11-转账管理](./11-转账管理.md)             | 批量转账批次管理        | `/admin/transfer`    |
 | [12-黑名单地址管理](./12-黑名单地址管理.md) | 风险地址管理            | `/admin/blacklist`   |
 | [13-币种管理](./13-币种管理.md)             | 币种配置管理            | `/admin/currencies`  |
+| [14-系统状态监控](./14-系统状态监控.md)     | 网络/RPC 健康与故障转移 | `/admin/status`      |
 | [99-通用组件库](./99-通用组件库.md)         | 前端通用组件规范        | -                    |
 
 ---
@@ -102,25 +103,26 @@
 
 ## 页面路由表
 
-| 路由                      | 页面组件             | 权限           | 描述              |
-| ------------------------- | -------------------- | -------------- | ----------------- |
-| `/login`                  | LoginPage            | 公开           | 登录页面          |
-| `/admin/dashboard`        | DashboardPage        | admin, finance | 数据统计首页      |
-| `/admin/vault`            | VaultManagePage      | admin, finance | Vault 资金管理    |
-| `/admin/transfer`         | TransferPage         | admin, finance | 转账管理          |
-| `/admin/users`            | UserListPage         | admin          | Web2 用户列表     |
-| `/admin/users/:id`        | UserDetailPage       | admin          | 用户详情          |
-| `/admin/web3users`        | Web3UserPage         | admin          | Web3 用户管理     |
-| `/admin/currencies`       | CurrencyPage         | admin          | 币种管理          |
-| `/admin/withdrawals`      | WithdrawalListPage   | admin, finance | 提现/转账审批列表 |
-| `/admin/withdrawals/:id`  | WithdrawalDetailPage | admin, finance | 审批详情          |
-| `/admin/ledger`           | LedgerPage           | admin, finance | 账本与交易        |
-| `/admin/flow`             | TransactionFlowPage  | admin, finance | 资金流水记录      |
-| `/admin/swap`             | SwapConfigPage       | admin          | Swap 配置         |
-| `/admin/blacklist`        | BlacklistPage        | admin          | 黑名单地址管理    |
-| `/admin/settings`         | SettingsPage         | admin          | 系统设置          |
-| `/admin/settings/roles`   | RoleManagePage       | admin          | 角色权限管理      |
-| `/admin/reports`          | ReportsPage          | admin, finance | 报表中心          |
+| 路由                     | 页面组件             | 权限           | 描述              |
+| ------------------------ | -------------------- | -------------- | ----------------- |
+| `/login`                 | LoginPage            | 公开           | 登录页面          |
+| `/admin/dashboard`       | DashboardPage        | admin, finance | 数据统计首页      |
+| `/admin/vault`           | VaultManagePage      | admin, finance | Vault 资金管理    |
+| `/admin/transfer`        | TransferPage         | admin, finance | 转账管理          |
+| `/admin/users`           | UserListPage         | admin          | Web2 用户列表     |
+| `/admin/users/:id`       | UserDetailPage       | admin          | 用户详情          |
+| `/admin/web3users`       | Web3UserPage         | admin          | Web3 用户管理     |
+| `/admin/currencies`      | CurrencyPage         | admin          | 币种管理          |
+| `/admin/withdrawals`     | WithdrawalListPage   | admin, finance | 提现/转账审批列表 |
+| `/admin/withdrawals/:id` | WithdrawalDetailPage | admin, finance | 审批详情          |
+| `/admin/ledger`          | LedgerPage           | admin, finance | 账本与交易        |
+| `/admin/flow`            | TransactionFlowPage  | admin, finance | 资金流水记录      |
+| `/admin/swap`            | SwapConfigPage       | admin          | Swap 配置         |
+| `/admin/blacklist`       | BlacklistPage        | admin          | 黑名单地址管理    |
+| `/admin/settings`        | SettingsPage         | admin          | 系统设置          |
+| `/admin/settings/roles`  | RoleManagePage       | admin          | 角色权限管理      |
+| `/admin/reports`         | ReportsPage          | admin, finance | 报表中心          |
+| `/admin/status`          | SystemStatusPage     | admin, finance | 网络/RPC 状态     |
 
 ---
 
