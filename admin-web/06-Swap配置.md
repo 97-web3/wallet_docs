@@ -330,8 +330,8 @@
 **筛选条件**:
 | 字段 | 组件 | 选项 |
 |------|------|------|
-| 链 | Select | 全部、TRX、ETH、BSC |
-| DEX | Select | 全部、Uniswap、PancakeSwap... |
+| 链 | Select | 全部、TRX、ETH、BSC、Polygon |
+| DEX | Select | 全部、Uniswap、PancakeSwap、QuickSwap... |
 | 状态 | Select | 全部、成功、失败、处理中 |
 | 日期范围 | RangePicker | 交易时间 |
 | 用户UID | Input | 搜索指定用户 |

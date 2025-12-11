@@ -15,8 +15,7 @@
 - **Web3 用户管理**: 设备管理、多网络钱包、地址级黑名单
 - **币种管理**: 币种配置、功能开关、上架/下架管理
 - **提现审批**: 提现/转账审批、风险评估、批量操作、审批配置
-- **薪资发放**: Excel 导入、数据校验、审批流程、发放追踪
-- **账本与交易**: 交易历史、资金流水、Vault 调整、对账工具
+- **账本与交易**: 交易历史、资金流水、充值记录、对账工具
 - **Swap 配置**: DEX 管理、滑点规则、汇率配置、兑换历史
 - **角色权限管理**: 11 模块权限矩阵、角色配置
 - **黑名单地址管理**: 风险地址管理、批量导入、监测管理
@@ -33,16 +32,15 @@
 | [02-Dashboard](./02-Dashboard.md)           | 管理后台首页            | `/admin/dashboard`   |
 | [03-用户管理](./03-用户管理.md)             | Web2 用户列表、状态管理 | `/admin/users`       |
 | [04-提现审批](./04-提现审批.md)             | 提现/转账审批队列       | `/admin/withdrawals` |
-| [05-薪资发放](./05-薪资发放.md)             | 批量薪资发放            | `/admin/payroll`     |
-| [06-账本与交易](./06-账本与交易.md)         | 交易记录、资金流水      | `/admin/ledger`      |
-| [07-Swap 配置](./07-Swap配置.md)            | DEX 与滑点配置          | `/admin/swap`        |
-| [08-系统设置](./08-系统设置.md)             | 系统配置管理            | `/admin/settings`    |
-| [09-报表与导出](./09-报表与导出.md)         | 报表生成与导出          | `/admin/reports`     |
-| [10-Web3 用户管理](./10-Web3用户管理.md)    | Web3 钱包用户管理       | `/admin/web3users`   |
-| [11-Vault 资金管理](./11-Vault资金管理.md)  | 多网络钱包、余额管理    | `/admin/vault`       |
-| [12-转账管理](./12-转账管理.md)             | 批量转账批次管理        | `/admin/transfer`    |
-| [13-黑名单地址管理](./13-黑名单地址管理.md) | 风险地址管理            | `/admin/blacklist`   |
-| [14-币种管理](./14-币种管理.md)             | 币种配置管理            | `/admin/currencies`  |
+| [05-账本与交易](./05-账本与交易.md)         | 交易记录、资金流水      | `/admin/ledger`      |
+| [06-Swap配置](./06-Swap配置.md)             | DEX 与滑点配置          | `/admin/swap`        |
+| [07-系统设置](./07-系统设置.md)             | 系统配置管理            | `/admin/settings`    |
+| [08-报表与导出](./08-报表与导出.md)         | 报表生成与导出          | `/admin/reports`     |
+| [09-Web3用户管理](./09-Web3用户管理.md)     | Web3 钱包用户管理       | `/admin/web3users`   |
+| [10-Vault资金管理](./10-Vault资金管理.md)   | 多网络钱包、余额管理    | `/admin/vault`       |
+| [11-转账管理](./11-转账管理.md)             | 批量转账批次管理        | `/admin/transfer`    |
+| [12-黑名单地址管理](./12-黑名单地址管理.md) | 风险地址管理            | `/admin/blacklist`   |
+| [13-币种管理](./13-币种管理.md)             | 币种配置管理            | `/admin/currencies`  |
 | [99-通用组件库](./99-通用组件库.md)         | 前端通用组件规范        | -                    |
 
 ---
@@ -56,7 +54,7 @@
 | 角色    | 描述       | 可访问页面                                      |
 | ------- | ---------- | ----------------------------------------------- |
 | admin   | 系统管理员 | 全部页面                                        |
-| finance | 财务人员   | Dashboard、提现审批、薪资发放、账本与交易、报表 |
+| finance | 财务人员   | Dashboard、提现审批、转账管理、账本与交易、报表 |
 
 ### 权限矩阵
 
@@ -66,14 +64,14 @@
 | 用户管理（冻结/解冻） | ✓     | -         |
 | 黑名单管理            | ✓     | ✓（只读） |
 | 提现审批              | ✓     | ✓         |
-| 薪资发放              | ✓     | ✓         |
+| 转账管理              | ✓     | ✓         |
 | Vault 余额调整        | ✓     | ✓         |
 | Swap 配置             | ✓     | -         |
 | 系统设置              | ✓     | -         |
 | 报表查看与导出        | ✓     | ✓         |
 | 审计日志              | ✓     | ✓（只读） |
 
-详细权限说明见 [08-系统设置](./08-系统设置.md)。
+详细权限说明见 [07-系统设置](./07-系统设置.md)。
 
 ---
 
@@ -116,8 +114,6 @@
 | `/admin/currencies`       | CurrencyPage         | admin          | 币种管理          |
 | `/admin/withdrawals`      | WithdrawalListPage   | admin, finance | 提现/转账审批列表 |
 | `/admin/withdrawals/:id`  | WithdrawalDetailPage | admin, finance | 审批详情          |
-| `/admin/payroll`          | PayrollPage          | admin, finance | 薪资发放          |
-| `/admin/payroll/:batchId` | PayrollDetailPage    | admin, finance | 批次详情          |
 | `/admin/ledger`           | LedgerPage           | admin, finance | 账本与交易        |
 | `/admin/flow`             | TransactionFlowPage  | admin, finance | 资金流水记录      |
 | `/admin/swap`             | SwapConfigPage       | admin          | Swap 配置         |
