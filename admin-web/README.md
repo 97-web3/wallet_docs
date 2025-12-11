@@ -8,31 +8,42 @@
 
 ### 核心功能
 
-- **Dashboard**: 数据统计、Vault 余额、告警通知、快捷入口
-- **用户管理**: 用户列表、冻结/解冻、离职处理、黑名单管理
-- **提现审批**: 审批队列、风险评估、批量操作、驳回处理
+- **Dashboard**: 数据统计、Vault 余额、告警通知、快捷入口、图表展示
+- **Vault 资金管理**: 多网络钱包管理、币种余额监控、预警阈值配置
+- **转账管理**: 批量转账批次、Excel 导入、执行追踪
+- **用户管理**: Web2 用户列表、冻结/解冻、白名单管理、安全设置
+- **Web3 用户管理**: 设备管理、多网络钱包、地址级黑名单
+- **币种管理**: 币种配置、功能开关、上架/下架管理
+- **提现审批**: 提现/转账审批、风险评估、批量操作、审批配置
 - **薪资发放**: Excel 导入、数据校验、审批流程、发放追踪
-- **账本与交易**: 交易历史、账本查询、Vault 调整、对账工具
-- **Swap 配置**: DEX 管理、滑点规则、兑换历史
-- **系统设置**: 角色权限、配置管理、告警设置、审计日志
+- **账本与交易**: 交易历史、资金流水、Vault 调整、对账工具
+- **Swap 配置**: DEX 管理、滑点规则、汇率配置、兑换历史
+- **角色权限管理**: 11 模块权限矩阵、角色配置
+- **黑名单地址管理**: 风险地址管理、批量导入、监测管理
+- **系统设置**: 配置管理、告警设置、审计日志
 - **报表与导出**: 统计报表、数据导出、定时报表
 
 ---
 
 ## 文档列表
 
-| 文档 | 描述 | 页面路径 |
-|------|------|----------|
-| [01-登录与认证](./01-登录与认证.md) | 登录页面、权限验证 | `/login` |
-| [02-Dashboard](./02-Dashboard.md) | 管理后台首页 | `/admin/dashboard` |
-| [03-用户管理](./03-用户管理.md) | 用户列表、状态管理 | `/admin/users` |
-| [04-提现审批](./04-提现审批.md) | 提现审批队列 | `/admin/withdrawals` |
-| [05-薪资发放](./05-薪资发放.md) | 批量薪资发放 | `/admin/payroll` |
-| [06-账本与交易](./06-账本与交易.md) | 交易记录、账本管理 | `/admin/ledger` |
-| [07-Swap配置](./07-Swap配置.md) | DEX 与滑点配置 | `/admin/swap` |
-| [08-系统设置](./08-系统设置.md) | 系统配置管理 | `/admin/settings` |
-| [09-报表与导出](./09-报表与导出.md) | 报表生成与导出 | `/admin/reports` |
-| [99-通用组件库](./99-通用组件库.md) | 前端通用组件规范 | - |
+| 文档                                        | 描述                    | 页面路径             |
+| ------------------------------------------- | ----------------------- | -------------------- |
+| [01-登录与认证](./01-登录与认证.md)         | 登录页面、权限验证      | `/login`             |
+| [02-Dashboard](./02-Dashboard.md)           | 管理后台首页            | `/admin/dashboard`   |
+| [03-用户管理](./03-用户管理.md)             | Web2 用户列表、状态管理 | `/admin/users`       |
+| [04-提现审批](./04-提现审批.md)             | 提现/转账审批队列       | `/admin/withdrawals` |
+| [05-薪资发放](./05-薪资发放.md)             | 批量薪资发放            | `/admin/payroll`     |
+| [06-账本与交易](./06-账本与交易.md)         | 交易记录、资金流水      | `/admin/ledger`      |
+| [07-Swap 配置](./07-Swap配置.md)            | DEX 与滑点配置          | `/admin/swap`        |
+| [08-系统设置](./08-系统设置.md)             | 系统配置管理            | `/admin/settings`    |
+| [09-报表与导出](./09-报表与导出.md)         | 报表生成与导出          | `/admin/reports`     |
+| [10-Web3 用户管理](./10-Web3用户管理.md)    | Web3 钱包用户管理       | `/admin/web3users`   |
+| [11-Vault 资金管理](./11-Vault资金管理.md)  | 多网络钱包、余额管理    | `/admin/vault`       |
+| [12-转账管理](./12-转账管理.md)             | 批量转账批次管理        | `/admin/transfer`    |
+| [13-黑名单地址管理](./13-黑名单地址管理.md) | 风险地址管理            | `/admin/blacklist`   |
+| [14-币种管理](./14-币种管理.md)             | 币种配置管理            | `/admin/currencies`  |
+| [99-通用组件库](./99-通用组件库.md)         | 前端通用组件规范        | -                    |
 
 ---
 
@@ -42,25 +53,25 @@
 
 ### 角色定义
 
-| 角色 | 描述 | 可访问页面 |
-|------|------|------------|
-| admin | 系统管理员 | 全部页面 |
-| finance | 财务人员 | Dashboard、提现审批、薪资发放、账本与交易、报表 |
+| 角色    | 描述       | 可访问页面                                      |
+| ------- | ---------- | ----------------------------------------------- |
+| admin   | 系统管理员 | 全部页面                                        |
+| finance | 财务人员   | Dashboard、提现审批、薪资发放、账本与交易、报表 |
 
 ### 权限矩阵
 
-| 功能 | admin | finance |
-|------|-------|---------|
-| 查看 Dashboard | ✓ | ✓ |
-| 用户管理（冻结/解冻） | ✓ | - |
-| 黑名单管理 | ✓ | ✓（只读） |
-| 提现审批 | ✓ | ✓ |
-| 薪资发放 | ✓ | ✓ |
-| Vault 余额调整 | ✓ | ✓ |
-| Swap 配置 | ✓ | - |
-| 系统设置 | ✓ | - |
-| 报表查看与导出 | ✓ | ✓ |
-| 审计日志 | ✓ | ✓（只读） |
+| 功能                  | admin | finance   |
+| --------------------- | ----- | --------- |
+| 查看 Dashboard        | ✓     | ✓         |
+| 用户管理（冻结/解冻） | ✓     | -         |
+| 黑名单管理            | ✓     | ✓（只读） |
+| 提现审批              | ✓     | ✓         |
+| 薪资发放              | ✓     | ✓         |
+| Vault 余额调整        | ✓     | ✓         |
+| Swap 配置             | ✓     | -         |
+| 系统设置              | ✓     | -         |
+| 报表查看与导出        | ✓     | ✓         |
+| 审计日志              | ✓     | ✓（只读） |
 
 详细权限说明见 [08-系统设置](./08-系统设置.md)。
 
@@ -93,22 +104,27 @@
 
 ## 页面路由表
 
-| 路由 | 页面组件 | 权限 | 描述 |
-|------|----------|------|------|
-| `/login` | LoginPage | 公开 | 登录页面 |
-| `/admin/dashboard` | DashboardPage | admin, finance | 数据统计首页 |
-| `/admin/users` | UserListPage | admin | 用户列表 |
-| `/admin/users/:id` | UserDetailPage | admin | 用户详情 |
-| `/admin/withdrawals` | WithdrawalListPage | admin, finance | 提现审批列表 |
-| `/admin/withdrawals/:id` | WithdrawalDetailPage | admin, finance | 提现详情 |
-| `/admin/payroll` | PayrollPage | admin, finance | 薪资发放 |
-| `/admin/payroll/:batchId` | PayrollDetailPage | admin, finance | 批次详情 |
-| `/admin/ledger` | LedgerPage | admin, finance | 账本与交易 |
-| `/admin/ledger/vault` | VaultPage | admin, finance | Vault 管理 |
-| `/admin/swap` | SwapConfigPage | admin | Swap 配置 |
-| `/admin/settings` | SettingsPage | admin | 系统设置 |
-| `/admin/settings/roles` | RoleManagePage | admin | 角色权限管理 |
-| `/admin/reports` | ReportsPage | admin, finance | 报表中心 |
+| 路由                      | 页面组件             | 权限           | 描述              |
+| ------------------------- | -------------------- | -------------- | ----------------- |
+| `/login`                  | LoginPage            | 公开           | 登录页面          |
+| `/admin/dashboard`        | DashboardPage        | admin, finance | 数据统计首页      |
+| `/admin/vault`            | VaultManagePage      | admin, finance | Vault 资金管理    |
+| `/admin/transfer`         | TransferPage         | admin, finance | 转账管理          |
+| `/admin/users`            | UserListPage         | admin          | Web2 用户列表     |
+| `/admin/users/:id`        | UserDetailPage       | admin          | 用户详情          |
+| `/admin/web3users`        | Web3UserPage         | admin          | Web3 用户管理     |
+| `/admin/currencies`       | CurrencyPage         | admin          | 币种管理          |
+| `/admin/withdrawals`      | WithdrawalListPage   | admin, finance | 提现/转账审批列表 |
+| `/admin/withdrawals/:id`  | WithdrawalDetailPage | admin, finance | 审批详情          |
+| `/admin/payroll`          | PayrollPage          | admin, finance | 薪资发放          |
+| `/admin/payroll/:batchId` | PayrollDetailPage    | admin, finance | 批次详情          |
+| `/admin/ledger`           | LedgerPage           | admin, finance | 账本与交易        |
+| `/admin/flow`             | TransactionFlowPage  | admin, finance | 资金流水记录      |
+| `/admin/swap`             | SwapConfigPage       | admin          | Swap 配置         |
+| `/admin/blacklist`        | BlacklistPage        | admin          | 黑名单地址管理    |
+| `/admin/settings`         | SettingsPage         | admin          | 系统设置          |
+| `/admin/settings/roles`   | RoleManagePage       | admin          | 角色权限管理      |
+| `/admin/reports`          | ReportsPage          | admin, finance | 报表中心          |
 
 ---
 
@@ -142,36 +158,36 @@
 
 ### 颜色系统
 
-| 用途 | 颜色 | 说明 |
-|------|------|------|
+| 用途 | 颜色    | 说明               |
+| ---- | ------- | ------------------ |
 | 主色 | #1890FF | 主要操作按钮、链接 |
-| 成功 | #52C41A | 成功状态、已完成 |
-| 警告 | #FAAD14 | 警告状态、待处理 |
-| 错误 | #FF4D4F | 错误状态、已驳回 |
+| 成功 | #52C41A | 成功状态、已完成   |
+| 警告 | #FAAD14 | 警告状态、待处理   |
+| 错误 | #FF4D4F | 错误状态、已驳回   |
 | 中性 | #8C8C8C | 次要文本、禁用状态 |
 
 ### 状态标签
 
-| 状态 | 颜色 | 场景 |
-|------|------|------|
-| 待处理 (pending) | 蓝色 | 待审批、待处理 |
-| 进行中 (processing) | 蓝色 | 处理中 |
-| 已完成 (completed) | 绿色 | 已通过、已发放 |
-| 已驳回 (rejected) | 红色 | 审批驳回 |
-| 已冻结 (frozen) | 灰色 | 账户冻结 |
-| 已取消 (cancelled) | 灰色 | 已取消 |
+| 状态                | 颜色 | 场景           |
+| ------------------- | ---- | -------------- |
+| 待处理 (pending)    | 蓝色 | 待审批、待处理 |
+| 进行中 (processing) | 蓝色 | 处理中         |
+| 已完成 (completed)  | 绿色 | 已通过、已发放 |
+| 已驳回 (rejected)   | 红色 | 审批驳回       |
+| 已冻结 (frozen)     | 灰色 | 账户冻结       |
+| 已取消 (cancelled)  | 灰色 | 已取消         |
 
 ---
 
 ## 响应式设计
 
-| 断点 | 宽度 | 布局调整 |
-|------|------|----------|
-| xs | < 576px | 隐藏侧边栏，使用抽屉菜单 |
-| sm | ≥ 576px | 折叠侧边栏 |
-| md | ≥ 768px | 显示折叠侧边栏 |
-| lg | ≥ 992px | 完整侧边栏 |
-| xl | ≥ 1200px | 完整布局 |
+| 断点 | 宽度     | 布局调整                 |
+| ---- | -------- | ------------------------ |
+| xs   | < 576px  | 隐藏侧边栏，使用抽屉菜单 |
+| sm   | ≥ 576px  | 折叠侧边栏               |
+| md   | ≥ 768px  | 显示折叠侧边栏           |
+| lg   | ≥ 992px  | 完整侧边栏               |
+| xl   | ≥ 1200px | 完整布局                 |
 
 ---
 
