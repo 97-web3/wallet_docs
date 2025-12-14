@@ -6,6 +6,8 @@
 
 后台管理前端为管理员和财务角色提供 Web 管理界面，实现用户管理、财务审批、系统配置等功能的可视化操作。
 
+> 说明：本目录为 **Admin Web 的产品/交互规范与页面说明**（文档模块）。当前仓库未包含 Admin Web 的前端工程代码，落地实现时请以 Admin API SRD 与本目录规范对齐。
+
 ### 核心功能
 
 - **Dashboard**: 数据统计、Vault 余额、告警通知、快捷入口、图表展示
@@ -45,6 +47,9 @@
 | [14-系统状态监控](./14-系统状态监控.md)     | 网络/RPC 健康与故障转移 | `/admin/status`      |
 | [15-最近操作动态](./15-最近操作动态.md)     | 最近操作记录列表        | `/admin/activities`  |
 | [99-通用组件库](./99-通用组件库.md)         | 前端通用组件规范        | -                    |
+| [18-员工目录与映射](./18-员工目录与映射.md) | 薪资员工主数据与UID映射 | `/admin/employees`   |
+| [19-告警中心](./19-告警中心.md)             | 告警闭环与认领处置       | `/admin/alerts`      |
+| [20-工作台与待办中心](./20-工作台与待办中心.md) | 待审批/待处理统一入口 | `/admin/workbench`   |
 
 ---
 
@@ -52,27 +57,40 @@
 
 所有 Admin 页面需要登录并具有相应角色权限。
 
-### 角色定义
+### 角色定义（建议模板）
 
-| 角色    | 描述       | 可访问页面                                      |
-| ------- | ---------- | ----------------------------------------------- |
-| admin   | 系统管理员 | 全部页面                                        |
-| finance | 财务人员   | Dashboard、提现审批、转账管理、账本与交易、报表 |
+> 实际角色/权限以“系统设置 → 角色权限管理”为准。本节提供企业场景（薪资发放 + 资金治理）的推荐角色模板，避免文档间出现互相矛盾的“写死角色”。
 
-### 权限矩阵
+| 角色 | 说明 | 典型职责 |
+|---|---|---|
+| `super_admin` | 超级管理员 | 管理管理员账号、角色、敏感配置；紧急开关与双人控制 |
+| `admin` | 系统管理员 | 日常运营配置、风控治理、全局查看（不等同于 super_admin） |
+| `finance_staff` / `finance_manager` | 财务 | 出金审批、转账执行、对账与报表、资金运营 |
+| `hr_staff` / `hr_manager` | 人力资源 | 员工目录维护、薪资批次创建/导入/提交、一级审批 |
+| `cfo` | 财务负责人 | 大额薪资/大额调整的终审（按阈值） |
+| `auditor` | 审计员 | 全量只读 + 导出（受控） + 合规报表 |
 
-| 功能                  | admin | finance   |
-| --------------------- | ----- | --------- |
-| 查看 Dashboard        | ✓     | ✓         |
-| 用户管理（冻结/解冻） | ✓     | -         |
-| 黑名单管理            | ✓     | ✓（只读） |
-| 提现审批              | ✓     | ✓         |
-| 转账管理              | ✓     | ✓         |
-| Vault 余额调整        | ✓     | ✓         |
-| Swap 配置             | ✓     | -         |
-| 系统设置              | ✓     | -         |
-| 报表查看与导出        | ✓     | ✓         |
-| 审计日志              | ✓     | ✓（只读） |
+### 权限矩阵（简化）
+
+> 详细权限拆解与 SoD/范围控制见：
+> - `wallet_docs/admin-web/settings/07-02-角色权限管理.md`
+> - `wallet_docs/admin-web/settings/07-01-人员管理.md`
+
+> 说明：下表为“常见默认分工”的示例。薪资发放涉及的 HR/CFO 多级审批请以 `wallet_docs/admin-web/transfer/02-审批流程.md` 为准。
+
+| 功能 | admin | finance | hr | auditor |
+| --- | --- | --- | --- | --- |
+| 查看 Dashboard | ✓ | ✓ | ✓（只读） | ✓（只读） |
+| 用户管理（冻结/解冻） | ✓ | - | - | ✓（只读） |
+| 员工目录与映射 | - | ✓（只读） | ✓ | ✓（只读） |
+| 黑名单管理 | ✓ | ✓（只读） | - | ✓（只读） |
+| 提现审批 | ✓ | ✓ | - | ✓（只读） |
+| 转账管理（含薪资批次） | ✓ | ✓ | ✓（按功能细分） | ✓（只读） |
+| Vault 资金管理 | ✓ | ✓ | - | ✓（只读） |
+| Swap 配置 | ✓ | - | - | ✓（只读） |
+| 系统设置 | ✓（部分） | - | - | ✓（只读） |
+| 报表查看与导出 | ✓ | ✓ | ✓（按范围） | ✓（受控） |
+| 审计日志 | ✓ | ✓（只读） | - | ✓ |
 
 详细权限说明见 [07-系统设置](./07-系统设置.md)。
 
@@ -83,7 +101,7 @@
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      浏览器 (Browser)                        │
-│  Admin Web (Vue/React SPA)                                  │
+│  Admin Web (SPA)                                            │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -110,7 +128,8 @@
 | `/login`                 | LoginPage            | 公开           | 登录页面          |
 | `/admin/dashboard`       | DashboardPage        | admin, finance | 数据统计首页      |
 | `/admin/vault`           | VaultManagePage      | admin, finance | Vault 资金管理    |
-| `/admin/transfer`        | TransferPage         | admin, finance | 转账管理          |
+| `/admin/transfer`        | TransferPage         | hr, finance    | 转账管理          |
+| `/admin/employees`       | EmployeeDirectoryPage | hr, finance    | 员工目录与映射    |
 | `/admin/users`           | UserListPage         | admin          | Web2 用户列表     |
 | `/admin/users/:id`       | UserDetailPage       | admin          | 用户详情          |
 | `/admin/web3users`       | Web3UserPage         | admin          | Web3 用户管理     |
@@ -122,10 +141,14 @@
 | `/admin/swap`            | SwapConfigPage       | admin          | Swap 配置         |
 | `/admin/blacklist`       | BlacklistPage        | admin          | 黑名单地址管理    |
 | `/admin/settings`        | SettingsPage         | admin          | 系统设置          |
+| `/admin/settings/admins` | AdminManagePage      | super_admin    | 管理员管理        |
 | `/admin/settings/roles`  | RoleManagePage       | admin          | 角色权限管理      |
+| `/admin/settings/org`    | OrgManagePage        | super_admin    | 组织与部门管理    |
 | `/admin/reports`         | ReportsPage          | admin, finance | 报表中心          |
 | `/admin/status`          | SystemStatusPage     | admin, finance | 网络/RPC 状态     |
 | `/admin/activities`      | RecentActivitiesPage | admin, finance | 最近操作动态列表  |
+| `/admin/alerts`          | AlertCenterPage      | admin, finance | 告警中心          |
+| `/admin/workbench`       | WorkbenchPage        | hr, finance    | 工作台与待办中心  |
 
 ---
 
