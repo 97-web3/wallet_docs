@@ -34,7 +34,7 @@
 | [04-提现审批](./04-提现审批.md)             | 提现/转账审批队列       | `/admin/withdrawals` |
 | [05-账本与交易](./05-账本与交易.md)         | 交易记录、资金流水      | `/admin/ledger`      |
 | [16-充值记录](./16-充值记录.md)             | 充值记录、异常处理      | `/admin/ledger`      |
-| [06-Swap 配置](./06-Swap配置.md)            | DEX 与滑点配置          | `/admin/swap`        |
+| [06-Swap 配置](./06-Swap配置.md)            | Provider/滑点/折算/历史配置 | `/admin/swap`        |
 | [07-系统设置](./07-系统设置.md)             | 系统配置管理            | `/admin/settings`    |
 | [08-报表与导出](./08-报表与导出.md)         | 报表生成与导出          | `/admin/reports`     |
 | [09-Web3 用户管理](./09-Web3用户管理.md)    | Web3 钱包用户管理       | `/admin/web3users`   |
