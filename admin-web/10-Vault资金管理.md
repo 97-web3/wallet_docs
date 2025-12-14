@@ -27,6 +27,7 @@
 7. [vault/07-审计、权限与合规.md](vault/07-审计、权限与合规.md)
 8. [vault/08-扩展-多Vault与流动性池监控.md](vault/08-扩展-多Vault与流动性池监控.md)
 9. [vault/09-性能、SLA与应急预案.md](vault/09-性能、SLA与应急预案.md)
+10. [vault/10-告警与通知.md](vault/10-告警与通知.md)
 
 ---
 
