@@ -42,6 +42,7 @@
 | [12-黑名单地址管理](./12-黑名单地址管理.md) | 风险地址管理            | `/admin/blacklist`   |
 | [13-币种管理](./13-币种管理.md)             | 币种配置管理            | `/admin/currencies`  |
 | [14-系统状态监控](./14-系统状态监控.md)     | 网络/RPC 健康与故障转移 | `/admin/status`      |
+| [15-最近操作动态](./15-最近操作动态.md)     | 最近操作记录列表        | `/admin/activities`  |
 | [99-通用组件库](./99-通用组件库.md)         | 前端通用组件规范        | -                    |
 
 ---
@@ -123,6 +124,7 @@
 | `/admin/settings/roles`  | RoleManagePage       | admin          | 角色权限管理      |
 | `/admin/reports`         | ReportsPage          | admin, finance | 报表中心          |
 | `/admin/status`          | SystemStatusPage     | admin, finance | 网络/RPC 状态     |
+| `/admin/activities`      | RecentActivitiesPage | admin, finance | 最近操作动态列表  |
 
 ---
 
