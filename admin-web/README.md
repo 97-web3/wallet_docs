@@ -143,7 +143,6 @@
 | `/admin/settings`        | SettingsPage         | admin          | 系统设置          |
 | `/admin/settings/admins` | AdminManagePage      | super_admin    | 管理员管理        |
 | `/admin/settings/roles`  | RoleManagePage       | admin          | 角色权限管理      |
-| `/admin/settings/org`    | OrgManagePage        | super_admin    | 组织与部门管理    |
 | `/admin/reports`         | ReportsPage          | admin, finance | 报表中心          |
 | `/admin/status`          | SystemStatusPage     | admin, finance | 网络/RPC 状态     |
 | `/admin/activities`      | RecentActivitiesPage | admin, finance | 最近操作动态列表  |
